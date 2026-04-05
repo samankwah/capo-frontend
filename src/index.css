@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark body {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+/* Matte Animated Background */
+
+.animated-bg {
+  background: linear-gradient(
+    270deg,
+    #d9d9d9,
+    #cfcfcf,
+    #e6e6e6,
+    #0f0f0f
+  );
+  background-size: 800% 800%;
+  animation: gradientMove 15s ease infinite;
+}
+
+.dark .animated-bg {
+  background: linear-gradient(
+    270deg,
+    #1f2937,
+    #111827,
+    #0f172a,
+    #000000
+  );
+  background-size: 800% 800%;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
