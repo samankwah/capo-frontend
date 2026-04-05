@@ -49,7 +49,7 @@ It features product search, filtering, sorting, and a clean UI.
 
 ```bash
 git https://github.com/chriswebofficial/CELU.git
-cd celu
+cd capo
 
 2. Install dependencies
 npm install
@@ -73,11 +73,8 @@ src/data/Product.ts
 
 
 ✨ Future Improvements
-User authentication
-Shopping cart functionality
 Backend integration
 Payment system
-Dark mode support
 📄 License
 
 
