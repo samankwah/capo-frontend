@@ -1,4 +1,4 @@
-# CELU 🛍️
+# CAPO 🛍️
 
 CAPO is a modern e-commerce web application built with React, Vite, and TypeScript.  
 It features product search, filtering, sorting, and a clean UI.
