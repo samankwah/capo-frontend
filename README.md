@@ -1,6 +1,6 @@
-# CAPO 🛍️
+# TipToe 🛍️
 
-CAPO is a modern e-commerce web application built with React, Vite, and TypeScript.  
+TipToe is a modern e-commerce web application built with React, Vite, and TypeScript.  
 It features product search, filtering, sorting, and a clean UI.
 
 ---
@@ -49,7 +49,7 @@ It features product search, filtering, sorting, and a clean UI.
 
 ```bash
 git https://github.com/chriswebofficial/CELU.git
-cd capo
+cd tiptoe
 
 2. Install dependencies
 npm install

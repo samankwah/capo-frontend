@@ -57,33 +57,33 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <div className="p-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-10 mt-24">
+      <div className="mx-auto mt-24 grid max-w-6xl gap-8 px-4 py-6 sm:px-6 md:grid-cols-2 md:gap-10 md:px-8">
         {/* Image */}
         <div>
           <img
             loading="lazy"
             src={product.image}
             alt={product.name}
-            className="w-full h-[400px] object-contain"
+            className="h-[280px] w-full object-contain sm:h-[340px] md:h-[400px]"
           />
         </div>
 
         {/* Info */}
         <div>
-          <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
+          <h1 className="mb-4 text-2xl font-bold sm:text-3xl">{product.name}</h1>
 
-          <p className="text-gray-600 dark:text-gray-300 mb-4">{product.description}</p>
+          <p className="mb-4 text-sm leading-6 text-gray-600 dark:text-gray-300 sm:text-base">{product.description}</p>
 
-          <div className="mb-4">
+          <div className="mb-4 flex flex-wrap items-center gap-2 sm:gap-3">
             {product.discount ? (
               <>
-                <span className="text-red-600 text-2xl font-bold mr-3">
+                <span className="text-2xl font-bold text-red-600">
                   {formatPrice(discountedPrice)}
                 </span>
                 <span className="line-through text-gray-400">
                   {formatPrice(product.price)}
                 </span>
-                <span className="ml-3 bg-red-100 text-red-600 text-sm px-2 py-1 rounded">
+                <span className="rounded bg-red-100 px-2 py-1 text-sm text-red-600">
                   -{product.discount}%
                 </span>
               </>
@@ -100,11 +100,11 @@ const ProductDetails = () => {
             <p className="text-red-500 font-semibold mb-4">Out of Stock</p>
           )}
 
-          <div className="flex gap-4 mt-6">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <button
               disabled={!product.inStock}
               onClick={handleAddToCart}
-              className={`px-6 py-3 rounded transition ${
+              className={`rounded px-6 py-3 transition sm:flex-1 ${
                 product.inStock
                   ? addedToCart
                     ? "bg-green-600 text-white"
@@ -118,7 +118,7 @@ const ProductDetails = () => {
             <button
               disabled={!product.inStock}
               onClick={handlePlaceOrder}
-              className={`px-6 py-3 rounded transition ${
+              className={`rounded px-6 py-3 transition sm:flex-1 ${
                 product.inStock
                   ? "border border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
                   : "border border-gray-300 dark:border-gray-600 text-gray-400 cursor-not-allowed"
@@ -130,7 +130,7 @@ const ProductDetails = () => {
 
           <Link
             to="/shop"
-            className="block mt-6 text-blue-500 hover:underline"
+            className="mt-6 inline-block text-blue-500 hover:underline"
           >
             &larr; Back to Shop
           </Link>

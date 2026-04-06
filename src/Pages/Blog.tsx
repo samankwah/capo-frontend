@@ -158,45 +158,47 @@ const Blog = () => {
   const featuredPosts = blogPosts.filter(post => post.featured);
 
   return (
-    <div>
-    <div className="min-h-screen pt-24 px-4 md:px-6">
-      <div className="max-w-7xl mx-auto">
+    <div className="overflow-x-clip">
+      <div className="min-h-screen px-4 pb-12 pt-24 sm:px-5 md:px-6">
+        <div className="mx-auto max-w-7xl">
         {/* Blog Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">CAPO Blog</h1>
-          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+        <div className="mb-10 text-center sm:mb-12">
+          <h1 className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">TipToe Blog</h1>
+          <p className="mx-auto max-w-2xl text-base text-gray-600 dark:text-gray-300 sm:text-lg">
             Stay updated with the latest news, reviews, and insights about mobile technology and gadgets.
           </p>
         </div>
 
         {/* Search Bar */}
-        <div className="mb-8 max-w-2xl mx-auto">
+        <div className="mx-auto mb-8 max-w-2xl">
           <div className="relative">
-            <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
             <input
               type="text"
               placeholder="Search blog posts..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border py-3 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-black dark:border-gray-600 dark:bg-gray-800 dark:text-white sm:text-base"
             />
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid gap-8 lg:grid-cols-3 xl:gap-10">
           {/* Main Content - 2/3 width */}
           <div className="lg:col-span-2">
             {/* Categories Filter */}
-            <div className="mb-8 overflow-x-auto">
-              <div className="flex space-x-2 pb-4">
+            <div className="relative mb-8">
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-gradient-to-r from-white via-white/90 to-transparent dark:from-gray-900 dark:via-gray-900/90 sm:hidden" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-gradient-to-l from-white via-white/90 to-transparent dark:from-gray-900 dark:via-gray-900/90 sm:hidden" />
+              <div className="blog-chip-scrollbar -mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-3 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:rounded-none sm:bg-transparent sm:px-0 sm:pb-0">
                 {categories.map((category) => (
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap ${
+                    className={`shrink-0 snap-start rounded-full border px-4 py-1.5 text-sm font-medium leading-5 transition-all duration-200 sm:shrink ${
                       selectedCategory === category
-                        ? "bg-black dark:bg-white text-white dark:text-black"
-                        : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                        ? "border-black bg-black text-white shadow-[0_10px_24px_rgba(15,23,42,0.16)] dark:border-white dark:bg-white dark:text-black"
+                        : "border-gray-200 bg-gray-100 text-gray-700 hover:border-gray-300 hover:bg-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                     }`}
                   >
                     {category}
@@ -206,11 +208,11 @@ const Blog = () => {
             </div>
 
             {/* Blog Posts Grid */}
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
               {filteredPosts.map((post) => (
                 <article 
                   key={post.id} 
-                  className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
+                  className="overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-lg dark:bg-gray-800"
                 >
                   <div className="h-48 overflow-hidden">
                     <img
@@ -220,35 +222,35 @@ const Blog = () => {
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                      <span className="flex items-center gap-1">
+                  <div className="p-5 sm:p-6">
+                    <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-gray-500 sm:text-sm">
+                      <span className="flex min-w-0 items-center gap-1">
                         <FiCalendar />
                         {post.date}
                       </span>
-                      <span className="flex items-center gap-1">
+                      <span className="flex min-w-0 items-center gap-1">
                         <FiUser />
-                        {post.author}
+                        <span className="truncate">{post.author}</span>
                       </span>
                     </div>
                     
                     <div className="mb-3">
-                      <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs rounded-full">
+                      <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-xs text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
                         {post.category}
                       </span>
                     </div>
                     
-                    <h2 className="text-xl font-bold mb-3 hover:text-gray-600">
+                    <h2 className="mb-3 text-xl font-bold leading-tight hover:text-gray-600">
                       <Link to={`/blog/${post.id}`}>{post.title}</Link>
                     </h2>
                     
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">{post.excerpt}</p>
+                    <p className="mb-4 text-sm leading-6 text-gray-600 dark:text-gray-300 sm:text-base">{post.excerpt}</p>
                     
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="mb-4 flex flex-wrap gap-2">
                       {post.tags.map((tag) => (
                         <span 
                           key={tag} 
-                          className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full"
+                          className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-300"
                         >
                           <FiTag size={10} />
                           {tag}
@@ -256,11 +258,11 @@ const Blog = () => {
                       ))}
                     </div>
                     
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                       <span className="text-sm text-gray-500">{post.readTime}</span>
                       <Link 
                         to={`/blog/${post.id}`}
-                        className="flex items-center text-black hover:text-gray-600 font-medium"
+                        className="inline-flex items-center font-medium text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         Read More
                         <FiArrowRight className="ml-2" />
@@ -273,22 +275,22 @@ const Blog = () => {
 
             {/* No Results Message */}
             {filteredPosts.length === 0 && (
-              <div className="text-center py-12">
-                <h3 className="text-xl font-semibold mb-2">No posts found</h3>
+              <div className="py-12 text-center">
+                <h3 className="mb-2 text-xl font-semibold">No posts found</h3>
                 <p className="text-gray-600 dark:text-gray-300">Try a different search term or category</p>
               </div>
             )}
           </div>
 
           {/* Sidebar - 1/3 width */}
-          <div className="lg:col-span-1">
+          <div className="space-y-6 lg:col-span-1 lg:space-y-8">
             {/* Featured Posts */}
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-8">
-              <h3 className="text-xl font-bold mb-6 pb-3 border-b dark:border-gray-700">Featured Posts</h3>
-              <div className="space-y-6">
+            <div className="rounded-xl bg-gray-50 p-5 dark:bg-gray-800 sm:p-6">
+              <h3 className="mb-5 border-b pb-3 text-xl font-bold dark:border-gray-700">Featured Posts</h3>
+              <div className="space-y-5">
                 {featuredPosts.map((post) => (
-                  <div key={post.id} className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden">
+                  <div key={post.id} className="flex items-start gap-3 sm:gap-4">
+                    <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg sm:h-20 sm:w-20">
                       <img
                         loading="lazy"
                         src={post.image}
@@ -296,11 +298,11 @@ const Blog = () => {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <div>
-                      <h4 className="font-semibold mb-1 hover:text-gray-600">
+                    <div className="min-w-0 flex-1">
+                      <h4 className="mb-1 text-sm font-semibold leading-6 hover:text-gray-600 sm:text-base">
                         <Link to={`/blog/${post.id}`}>{post.title}</Link>
                       </h4>
-                      <div className="flex items-center text-sm text-gray-500">
+                      <div className="flex flex-wrap items-center text-xs text-gray-500 sm:text-sm">
                         <FiCalendar className="mr-1" />
                         {post.date}
                       </div>
@@ -311,14 +313,14 @@ const Blog = () => {
             </div>
 
             {/* Categories */}
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-8">
-              <h3 className="text-xl font-bold mb-6 pb-3 border-b dark:border-gray-700">Categories</h3>
+            <div className="rounded-xl bg-gray-50 p-5 dark:bg-gray-800 sm:p-6">
+              <h3 className="mb-5 border-b pb-3 text-xl font-bold dark:border-gray-700">Categories</h3>
               <ul className="space-y-3">
                 {categories.slice(1).map((category) => (
                   <li key={category}>
                     <button
                       onClick={() => setSelectedCategory(category)}
-                      className={`flex items-center justify-between w-full p-2 rounded-lg hover:bg-white dark:hover:bg-gray-700 ${
+                      className={`flex w-full items-center justify-between rounded-lg p-2 text-left transition-colors hover:bg-white dark:hover:bg-gray-700 ${
                         selectedCategory === category ? "bg-white dark:bg-gray-700 font-medium" : ""
                       }`}
                     >
@@ -331,14 +333,14 @@ const Blog = () => {
             </div>
 
             {/* Popular Tags */}
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-              <h3 className="text-xl font-bold mb-6 pb-3 border-b dark:border-gray-700">Popular Tags</h3>
+            <div className="rounded-xl bg-gray-50 p-5 dark:bg-gray-800 sm:p-6">
+              <h3 className="mb-5 border-b pb-3 text-xl font-bold dark:border-gray-700">Popular Tags</h3>
               <div className="flex flex-wrap gap-2">
                 {popularTags.map((tag) => (
                   <button
                     key={tag}
                     onClick={() => setSearchQuery(tag)}
-                    className="px-3 py-2 bg-white dark:bg-gray-700 border dark:border-gray-600 text-sm rounded-lg hover:bg-black hover:text-white hover:border-black dark:hover:bg-white dark:hover:text-black dark:hover:border-white transition-colors"
+                    className="rounded-lg border bg-white px-3 py-2 text-sm transition-colors hover:border-black hover:bg-black hover:text-white dark:border-gray-600 dark:bg-gray-700 dark:hover:border-white dark:hover:bg-white dark:hover:text-black"
                   >
                     {tag}
                   </button>
@@ -347,16 +349,16 @@ const Blog = () => {
             </div>
 
             {/* Newsletter Subscription */}
-            <div className="mt-8 bg-black text-white rounded-xl p-6">
-              <h3 className="text-xl font-bold mb-3">Stay Updated</h3>
-              <p className="text-gray-300 mb-4">Subscribe to our newsletter for the latest tech insights.</p>
-              <div className="flex">
+            <div className="rounded-xl bg-black p-5 text-white sm:p-6">
+              <h3 className="mb-3 text-xl font-bold">Stay Updated</h3>
+              <p className="mb-4 text-sm text-gray-300 sm:text-base">Subscribe to our newsletter for the latest tech insights.</p>
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="flex-1 px-4 py-2 rounded-l-lg text-black dark:text-white dark:bg-gray-800 focus:outline-none"
+                  className="min-w-0 flex-1 rounded-lg px-4 py-3 text-black focus:outline-none dark:bg-gray-800 dark:text-white sm:rounded-r-none"
                 />
-                <button className="bg-white text-black px-4 py-2 rounded-r-lg font-medium hover:bg-gray-100">
+                <button className="rounded-lg bg-white px-4 py-3 font-medium text-black hover:bg-gray-100 sm:rounded-l-none">
                   Subscribe
                 </button>
               </div>
@@ -364,10 +366,10 @@ const Blog = () => {
           </div>
         </div>
       </div>
-     
+
+      </div>
+      <Footer />
     </div>
-     <Footer />
-     </div>
   );
 };
 

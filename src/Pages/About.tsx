@@ -13,7 +13,7 @@ const About = () => {
       image: "https://randomuser.me/api/portraits/men/32.jpg",
       rating: 5,
       review:
-        "Capo has the best mobile covers I’ve ever purchased. The quality is excellent and delivery was super fast!",
+        "TipToe has the best mobile covers I’ve ever purchased. The quality is excellent and delivery was super fast!",
     },
     {
       name: "Grace M.",
@@ -21,7 +21,7 @@ const About = () => {
       image: "https://randomuser.me/api/portraits/women/44.jpg",
       rating: 4,
       review:
-        "Affordable prices and genuine products. I highly recommend Capo for anyone looking for reliable accessories.",
+        "Affordable prices and genuine products. I highly recommend TipToe for anyone looking for reliable accessories.",
     },
     {
       name: "James K.",
@@ -67,7 +67,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-black to-gray-800 text-white py-20 px-6 text-center animate-fadeUp">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          About Capo
+          About TipToe
         </h1>
         <p className="max-w-2xl mx-auto text-lg text-gray-300">
           Technology made stylish, affordable, and accessible for everyone.
@@ -82,7 +82,7 @@ const About = () => {
               Who We Are
             </h2>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-              Capo is a modern mobile retail brand focused on delivering
+              TipToe is a modern mobile retail brand focused on delivering
               high-quality smartphones, stylish mobile covers, and premium accessories.
             </p>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">

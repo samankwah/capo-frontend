@@ -14,7 +14,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     try {
-      const stored = localStorage.getItem("capo-theme") as Theme | null;
+      const stored = localStorage.getItem("tiptoe-theme") as Theme | null;
       if (stored === "light" || stored === "dark") return stored;
     } catch {}
     return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -29,7 +29,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     } else {
       root.classList.remove("dark");
     }
-    localStorage.setItem("capo-theme", theme);
+    localStorage.setItem("tiptoe-theme", theme);
   }, [theme]);
 
   const toggleTheme = useCallback(() => {

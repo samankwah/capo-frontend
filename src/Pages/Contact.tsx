@@ -155,7 +155,7 @@ const Contact: React.FC = () => {
                 )}
               </div>
               <Link
-                to="/DemoNotice">
+                to="/demo">
               <button
                 type="submit"
                 className="w-full bg-blue-600 text-white py-3 rounded-full font-semibold hover:bg-blue-700 transition"
@@ -172,15 +172,15 @@ const Contact: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
                   Contact Information
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-2">📍 15 Capo Avenue, Osu, Accra</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-2">📍 15 TipToe Avenue, Osu, Accra</p>
                 <p className="text-gray-600 dark:text-gray-300 mb-2">📞 +233 30 277 0000</p>
-                <p className="text-gray-600 dark:text-gray-300 mb-2">✉️ contact@capo.com</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-2">✉️ contact@tiptoe.com</p>
               </div>
 
               {/* Embedded Google Map */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden h-64">
                 <iframe
-                  title="Capo Location"
+                  title="TipToe Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.9!2d-0.1870!3d5.5560!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sOsu%2C%20Accra!5e0!3m2!1sen!2sgh"
                   width="100%"
                   height="100%"

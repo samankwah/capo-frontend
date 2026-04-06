@@ -39,19 +39,19 @@ const BrandLogos = () => {
   }, []);
 
   return (
-    <section className="py-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-14 md:py-16 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center text-gray-500 dark:text-gray-400 text-sm font-medium mb-10 tracking-wide uppercase"
+          className="text-center text-gray-500 dark:text-gray-400 text-sm font-medium mb-8 md:mb-10 tracking-wide uppercase"
         >
           Trusted by Top Brands
         </motion.p>
 
-        <div className="relative overflow-hidden py-8">
+        <div className="relative overflow-hidden py-6 md:py-8">
           <motion.div
             className="flex w-max items-center"
             animate={sequenceWidth > 0 ? { x: [0, -sequenceWidth] } : undefined}
@@ -66,18 +66,18 @@ const BrandLogos = () => {
                 key={groupIndex}
                 ref={groupIndex === 0 ? sequenceRef : undefined}
                 aria-hidden={groupIndex > 0}
-                className="flex shrink-0 items-center gap-8 md:gap-10 pr-8 md:pr-10"
+                className="flex shrink-0 items-center gap-3 md:gap-10 pr-3 md:pr-10"
               >
                 {brands.map((brand) => (
                   <div
                     key={`${groupIndex}-${brand.name}`}
-                    className="flex items-center justify-center w-[160px] md:w-[200px] shrink-0"
+                    className="flex shrink-0 items-center justify-center w-[104px] md:w-[200px]"
                   >
                     <img
                       loading="lazy"
                       src={brand.logo}
                       alt={brand.name}
-                      className="h-10 md:h-14 max-w-[140px] md:max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300"
+                      className="h-8 md:h-14 max-w-[84px] md:max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300"
                     />
                   </div>
                 ))}
@@ -85,8 +85,8 @@ const BrandLogos = () => {
             ))}
           </motion.div>
 
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-white dark:from-gray-900 to-transparent md:w-32" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-white dark:from-gray-900 to-transparent md:w-32" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-white dark:from-gray-900 to-transparent md:w-32" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-white dark:from-gray-900 to-transparent md:w-32" />
         </div>
       </div>
     </section>

@@ -24,7 +24,7 @@ const CartPage = () => {
       navigate("/profile", { state: { from: "/cart" } });
       return;
     }
-    const num = `CAPO-${Date.now().toString(36).toUpperCase()}`;
+    const num = `TIPTOE-${Date.now().toString(36).toUpperCase()}`;
     setOrderNumber(num);
     setOrderPlaced(true);
     clearCart();

@@ -68,8 +68,8 @@ const iconFloat = {
 
 const WhyChooseUs = () => {
   return (
-    <section className="bg-gray-50 dark:bg-gray-800 py-20 transition-colors">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+    <section className="bg-gray-50 dark:bg-gray-800 py-16 md:py-20 transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
 
         {/* Title */}
         <motion.h2
@@ -77,9 +77,9 @@ const WhyChooseUs = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-bold mb-4"
+          className="text-2xl md:text-4xl font-bold mb-4"
         >
-          Why Choose CAPO?
+          Why Choose TipToe?
         </motion.h2>
 
         <motion.p
@@ -87,7 +87,7 @@ const WhyChooseUs = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-14"
+          className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10 md:mb-14"
         >
           We provide the best mobile devices and accessories with top-notch service.
         </motion.p>
@@ -98,7 +98,7 @@ const WhyChooseUs = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8"
         >
           {features.map((feature, index) => (
             <motion.div
@@ -108,7 +108,7 @@ const WhyChooseUs = () => {
                 y: -8,
                 boxShadow: "0px 20px 40px rgba(0,0,0,0.08)",
               }}
-              className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm transition-all"
+              className="bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-8 shadow-sm transition-all"
             >
               <motion.div
                 variants={iconFloat}

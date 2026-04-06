@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Footer from "../components/Footer";
 import { useAuth } from "../context/AuthContext";
 
+const DEFAULT_AVATAR = "/default-avatar.svg";
+
 const getFirebaseErrorMessage = (code: string): string => {
   switch (code) {
     case "auth/email-already-in-use":
@@ -86,12 +88,35 @@ const AuthPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [profilePhotoFailed, setProfilePhotoFailed] = useState(false);
+  const [defaultAvatarFailed, setDefaultAvatarFailed] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     fullName: "",
   });
+
+  useEffect(() => {
+    setProfilePhotoFailed(false);
+    setDefaultAvatarFailed(false);
+  }, [user?.photoURL]);
+
+  const userInitial = (user?.displayName || user?.email || "U").charAt(0).toUpperCase();
+  const profileAvatarSrc = !profilePhotoFailed && user?.photoURL
+    ? user.photoURL
+    : !defaultAvatarFailed
+      ? DEFAULT_AVATAR
+      : null;
+
+  const handleProfileAvatarError = () => {
+    if (!profilePhotoFailed && user?.photoURL) {
+      setProfilePhotoFailed(true);
+      return;
+    }
+
+    setDefaultAvatarFailed(true);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -154,7 +179,7 @@ const AuthPage = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.4 }}
-        className="bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors"
+        className="bg-gray-50 dark:bg-gray-900 min-h-screen pt-16 transition-colors sm:pt-[72px]"
       >
         {/* ── Banner ── */}
         <div className="relative">
@@ -168,12 +193,17 @@ const AuthPage = () => {
           >
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-end gap-6">
               {/* Avatar */}
-              <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-lg overflow-hidden bg-green-600 flex items-center justify-center shrink-0 -mt-20 sm:-mt-24">
-                {user.photoURL ? (
-                  <img src={user.photoURL} alt={user.displayName || "User"} className="w-full h-full object-cover" />
+              <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-lg overflow-hidden bg-green-600 flex items-center justify-center shrink-0 -mt-20 sm:-mt-8">
+                {profileAvatarSrc ? (
+                  <img
+                    src={profileAvatarSrc}
+                    alt={user.displayName || "User"}
+                    className="w-full h-full object-cover"
+                    onError={handleProfileAvatarError}
+                  />
                 ) : (
                   <span className="text-white text-4xl sm:text-5xl font-bold">
-                    {(user.displayName || user.email || "U").charAt(0).toUpperCase()}
+                    {userInitial}
                   </span>
                 )}
               </div>
@@ -307,6 +337,7 @@ const AuthPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
+      className="pt-16 sm:pt-[72px]"
     >
       <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 transition-colors">
         <div className="max-w-md w-full bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">

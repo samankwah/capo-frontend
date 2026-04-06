@@ -9,9 +9,9 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "What is Capo?",
+    question: "What is TipToe?",
     answer:
-      "Capo is a modern mobile retail brand offering smartphones, accessories, and stylish mobile covers with top-notch quality.",
+      "TipToe is a modern mobile retail brand offering smartphones, accessories, and stylish mobile covers with top-notch quality.",
   },
   {
     question: "Do you ship internationally?",

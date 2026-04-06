@@ -22,7 +22,7 @@ const Newsletter = () => {
           viewport={{ once: true }}
           className="mb-8 text-green-100 max-w-xl mx-auto"
         >
-          Subscribe to receive special offers, discounts, and the latest products from CAPO.
+          Subscribe to receive special offers, discounts, and the latest products from TipToe.
         </motion.p>
 
         <motion.form

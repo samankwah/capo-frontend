@@ -2,11 +2,10 @@ import { motion } from "framer-motion";
 
 const PromoBanner = () => {
   return (
-    <div className="overflow-hidden relative ">
-      {/* Animated gradient background */}
+    <div className="relative overflow-hidden">
       <motion.div
         className="absolute inset-0"
-        animate={{ backgroundPosition: ["0% 50%", "100% 50%"] }} // move background horizontally
+        animate={{ backgroundPosition: ["0% 50%", "100% 50%"] }}
         transition={{
           repeat: Infinity,
           repeatType: "loop",
@@ -14,14 +13,13 @@ const PromoBanner = () => {
           ease: "linear",
         }}
         style={{
-          background: "linear-gradient(90deg, #16a34a, #4ade80, #22c55e, #16a34a)", // green gradient
-          backgroundSize: "300% 100%", // make gradient wide so it moves
+          background: "linear-gradient(90deg, #16a34a, #4ade80, #22c55e, #16a34a)",
+          backgroundSize: "300% 100%",
         }}
       />
 
-      {/* Scrolling text */}
       <motion.div
-        className="relative whitespace-nowrap text-white text-center py-3 px-4 md:py-4 md:px-6 font-semibold text-sm md:text-lg"
+        className="relative px-4 py-3 text-center text-sm font-semibold text-white md:px-6 md:py-4 md:text-lg"
         animate={{ x: ["100%", "-100%"] }}
         transition={{
           repeat: Infinity,
@@ -30,7 +28,10 @@ const PromoBanner = () => {
           ease: "linear",
         }}
       >
-        🎉 Limited Time Offer! Get up to 30% off on all products! Use code: <span className="underline">CAPO30</span> 🛒 
+        <span className="inline-block whitespace-nowrap">
+          Limited Time Offer! Get up to 30% off on all products! Use code:{" "}
+          <span className="underline">TIPTOE30</span>
+        </span>
       </motion.div>
     </div>
   );
